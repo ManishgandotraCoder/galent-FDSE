@@ -78,7 +78,6 @@ def start_run(
     epoch: int | None = None,
     latencies: list[int] | None = None,
 ) -> RunView:
-    from app.eval.harness import publish_processed
     from app.services.intake import is_current
 
     run_id = str(uuid.uuid4())
@@ -102,13 +101,6 @@ def start_run(
         view.routing,
         view.confidence,
         latency_ms,
-    )
-    values = snapshot.values or {}
-    publish_processed(
-        list(values.get("extractions") or []),
-        list(values.get("document_latencies") or []),
-        values.get("match"),
-        list(values.get("validation_issues") or []),
     )
     return view
 

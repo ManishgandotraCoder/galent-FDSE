@@ -142,22 +142,22 @@ export type FileList = {
 
 export type EvalReport = {
   documents_processed: number;
+  cases?: number;
+  auto_cleared?: number;
+  needs_review?: number;
+  rejected?: number;
+  average_confidence?: number | null;
   field_accuracy: number | null;
   exception_precision: number | null;
   exception_recall: number | null;
   average_latency_ms: number;
   p95_latency_ms: number;
   average_tokens?: number;
-  variant_cases?: number;
-  false_auto_clear_rate?: number | null;
-  auto_clear_precision?: number | null;
-  auto_clear_recall?: number | null;
-  false_rejection_rate?: number | null;
-  human_review_rate?: number | null;
   auto_clear_confidence: number;
   flag_confidence: number;
   documents: {
     document_id: string;
+    file_id?: string | null;
     presentation: string;
     language: string;
     field_accuracy: number | null;

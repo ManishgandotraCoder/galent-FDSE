@@ -16,7 +16,7 @@ uv sync
 uv run uvicorn app.main:app --reload --host 127.0.0.1 --port 8000 --no-access-log
 ```
 
-Open http://127.0.0.1:8000/docs. The Next.js intake page still uses its own upload routes on port 3000. This API accepts the same file types and the same 20-file cap, with CORS open for `localhost:3000`.
+Open http://127.0.0.1:8000/docs. The website on port 3000 proxies to this API. The browser does not call this process directly. One case can hold 20 files. CORS is open for `localhost:3000`.
 
 ```bash
 uv run pytest
@@ -34,7 +34,7 @@ app/schemas/      data shapes
 app/eval/         labelled-pack score
 ```
 
-A match auto-clears at 0.95 or above when no exception is present. From 0.70 up to that line it is flagged. Below 0.70, or when a document is missing, unreadable, or duplicated, it is rejected. A duplicate invoice number is rejected even when extraction confidence is high.
+A match auto-clears at 0.95 or above when no exception is present. From 0.70 up to that line it is flagged. Below 0.70, or when a document is missing or unreadable, it is rejected. An exact duplicate is the same invoice number, vendor, amount, and purchase order. That is rejected even when the read is strong. The same invoice number with a different vendor or amount is only flagged.
 
 ## API
 
@@ -48,7 +48,7 @@ Commercial exceptions (vendor, total, price, quantity, partial delivery) draft a
 
 ## Sample documents
 
-`sample_data/` holds 20 labelled purchase orders, invoices, and goods receipts for Northwind Fabrication. The set includes a clean match, a partial delivery, a wrong invoice total, a duplicate invoice number, two vendor-name problems, skewed scans, and one mixed Hindi-English photograph. `ground_truth.json` is the label file.
+`sample_data/` holds 29 labelled purchase orders, invoices, and goods receipts for Northwind Fabrication. The set includes a clean match, a partial delivery, a wrong invoice total, an exact duplicate, a legal-name variant that still matches, a different vendor, skewed scans, one mixed Hindi-English photograph, and three clean trios at the 100%, 95%, and 90% lines. `ground_truth.json` is the label file. `eval_report.json` is the last score of that pack. Upload one case at a time. The workbench holds 20 files, and matching the whole pack in one case mixes the planted errors together.
 
 ```bash
 uv run python scripts/generate_sample_data.py

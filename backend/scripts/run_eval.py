@@ -14,8 +14,8 @@ def main() -> None:
     print(f"Field accuracy:            {accuracy}")
     print(f"Exception precision:       {precision}")
     print(f"Exception recall:          {recall}")
-    print(f"Average latency:           {report['average_latency_ms'] / 1000:.2f} sec")
-    print(f"P95 latency:               {report['p95_latency_ms'] / 1000:.2f} sec")
+    print(f"Average latency:           {_duration(report['average_latency_ms'])}")
+    print(f"P95 latency:               {_duration(report['p95_latency_ms'])}")
     print(f"Average tokens/document:   {report['average_tokens']:.0f}")
     print(f"Variant cases:             {report.get('variant_cases', 0)}")
     print(f"False auto-clear rate:     {_percent(report.get('false_auto_clear_rate'))}")
@@ -27,6 +27,12 @@ def main() -> None:
     for bundle in report["bundles"]:
         mark = "ok" if bundle["expected_exceptions"] == bundle["predicted_exceptions"] else "DIFF"
         print(f"  [{mark}] {bundle['bundle_id']}: {bundle['predicted_exceptions']}")
+
+
+def _duration(ms: float) -> str:
+    if ms < 1000:
+        return f"{ms:.0f} ms"
+    return f"{ms / 1000:.2f} sec"
 
 
 def _percent(value: float | None) -> str:

@@ -1,4 +1,3 @@
-import json
 from pathlib import Path
 
 from fastapi import APIRouter
@@ -6,7 +5,7 @@ from fastapi.responses import JSONResponse, Response
 
 from app.core.config import BACKEND_ROOT
 from app.core.logging import get_logger
-from app.eval.harness import live_report_path, run_evaluation, write_report
+from app.eval.harness import case_report
 from app.services.storage import content_disposition
 
 router = APIRouter(tags=["eval"])
@@ -20,13 +19,6 @@ _MEDIA_TYPES = {
     ".webp": "image/webp",
     ".gif": "image/gif",
 }
-
-
-def _report_file():
-    live = live_report_path()
-    if live.is_file():
-        return live
-    return None
 
 
 @router.get("/api/eval/documents/{name}")
@@ -49,40 +41,19 @@ def get_sample_document(name: str) -> Response:
 
 @router.get("/api/eval", response_model=None)
 def get_eval() -> dict | JSONResponse:
-    path = _report_file()
-    if path is None:
-        return JSONResponse({"error": "No evaluation yet."}, status_code=404)
-    return json.loads(path.read_text(encoding="utf-8"))
-
-
-@router.post("/api/eval", response_model=None)
-def run_eval() -> dict:
-    logger.info("evaluation started")
-    report = run_evaluation()
-    write_report(report, live_report_path())
-    logger.info(
-        "evaluation finished documents=%s field_accuracy=%s",
-        report.get("documents_processed"),
-        report.get("field_accuracy"),
-    )
+    report = case_report()
+    if report is None:
+        return JSONResponse({"error": "No cases yet."}, status_code=404)
     return report
 
 
-@router.delete("/api/eval")
-def delete_eval() -> dict[str, bool]:
-    """Remove saved cases from the database. Uploaded files stay on disk."""
-    from app.services.intake import clear_intake
-    from app.pipeline.graph import discard_checkpoints
-    from app.services.run_store import clear_runs
-
-    discard_checkpoints()
-    clear_runs()
-    clear_intake()
-    try:
-        live_report_path().unlink()
-    except FileNotFoundError:
-        pass
-    return {"cleared": True}
+@router.post("/api/eval", response_model=None)
+def run_eval() -> dict | JSONResponse:
+    report = case_report()
+    if report is None:
+        return JSONResponse({"error": "No cases yet."}, status_code=404)
+    logger.info("evaluation read cases=%s documents=%s", report.get("cases"), report.get("documents_processed"))
+    return report
 
 
 def _sample_path(name: str) -> Path | None:

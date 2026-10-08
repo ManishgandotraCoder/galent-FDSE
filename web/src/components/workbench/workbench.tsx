@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 import { readApi } from "@/lib/api/client";
 import type { FileList, IntakeStatus, RunSummary, RunView, StoredFile } from "@/lib/api/types";
-import { caseTitle, formatHours, formatPercent, minutesSaved, routingLabel } from "@/lib/format";
+import { caseTitle, formatDuration, formatPercent, routingLabel } from "@/lib/format";
 import { CaseReview } from "./case-review";
 
 const ACCEPT = ".pdf,.png,.jpg,.jpeg,.webp,.gif,.tif,.tiff,.txt,.csv";
@@ -78,31 +78,32 @@ export function Workbench() {
     let cancelled = false;
     let primed = false;
     let seenRun: string | null = null;
+    let timer = 0;
 
     async function poll() {
+      let wait = 5000;
       try {
         const job = await readApi<IntakeStatus>("/api/intake");
         if (cancelled) return;
         setIntake(job);
+        if (job.status === "running") wait = 1000;
         if (!primed) {
           primed = true;
           seenRun = job.run_id;
-          return;
-        }
-        if (job.status === "done" && job.run_id && job.run_id !== seenRun) {
+        } else if (job.status === "done" && job.run_id && job.run_id !== seenRun) {
           seenRun = job.run_id;
           await refreshLists();
         }
       } catch {
         // The status button reports the API on its own.
       }
+      if (!cancelled) timer = window.setTimeout(() => void poll(), wait);
     }
 
     void poll();
-    const timer = window.setInterval(() => void poll(), 1000);
     return () => {
       cancelled = true;
-      window.clearInterval(timer);
+      window.clearTimeout(timer);
     };
   }, [refreshLists]);
 
@@ -199,7 +200,10 @@ export function Workbench() {
   const cleared = runs.filter((run) => run.routing === "auto_clear").length;
   const flagged = runs.filter((run) => run.routing === "flag").length;
   const rejected = runs.filter((run) => run.routing === "reject").length;
-  const saved = minutesSaved(runs);
+  const readMs = runs.reduce((total, run) => total + (run.latency_ms ?? 0), 0);
+  const confidences = runs.flatMap((run) => (run.confidence == null ? [] : [run.confidence]));
+  const averageConfidence =
+    confidences.length === 0 ? null : confidences.reduce((total, value) => total + value, 0) / confidences.length;
   const visibleFiles = files.filter((file) => matchesQueue(linkedRuns.get(file.id) ?? null, queueFilter));
   const visibleUnlinked = unlinkedRuns.filter((run) => matchesQueue(run, queueFilter));
 
@@ -329,11 +333,12 @@ export function Workbench() {
       <section className="overflow-hidden rounded-2xl border border-line bg-card">
         <div className="h-0.5 bg-accent" />
         <div className="px-4 py-4 sm:px-5">
-          <p className="text-xs tracking-[0.16em] text-muted uppercase">Potential AP time saved</p>
-          <p className="mt-1 font-serif text-3xl text-ink">{runs.length === 0 ? "—" : formatHours(saved)}</p>
+          <p className="text-xs tracking-[0.16em] text-muted uppercase">Pipeline time</p>
+          <p className="mt-1 font-serif text-3xl text-ink">{runs.length === 0 ? "—" : formatDuration(readMs)}</p>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-muted">
-            Assumes 25 minutes to chase one case by hand, 2 minutes to confirm an auto-clear, 8 minutes to review a
-            prepared draft, and 20 minutes when the set is rejected for manual handling.
+            {averageConfidence == null
+              ? "This is how long the pipeline spent on the cases on this desk."
+              : `Average case confidence is ${formatPercent(averageConfidence)}. This is how long the pipeline spent on the cases on this desk.`}
           </p>
         </div>
       </section>

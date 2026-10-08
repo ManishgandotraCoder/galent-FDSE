@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 import { readApi } from "@/lib/api/client";
@@ -13,80 +14,44 @@ export function EvalBoard() {
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [running, setRunning] = useState(true);
-  const [cleared, setCleared] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const request = useRef(0);
 
-  async function runEvaluation() {
+  async function refresh() {
     const id = ++request.current;
-    setRunning(true);
-    setCleared(false);
+    setBusy(true);
     setError(null);
     try {
-      const data = await readApi<EvalReport>("/api/eval", { method: "POST" });
+      const data = await readApi<EvalReport>("/api/eval");
       if (request.current !== id) return;
       setReport(data);
       setSelectedId(null);
     } catch (caught) {
       if (request.current !== id) return;
+      const message = caught instanceof Error ? caught.message : "The cases could not be loaded.";
+      if (message === "No cases yet.") {
+        setReport(null);
+        setError(null);
+        return;
+      }
       setReport(null);
-      setError(caught instanceof Error ? caught.message : "The evaluation could not be run.");
+      setError(message);
     } finally {
-      if (request.current === id) setRunning(false);
-    }
-  }
-
-  async function clearReport() {
-    const id = ++request.current;
-    setBusy(true);
-    setRunning(false);
-    try {
-      await readApi<{ cleared: boolean }>("/api/eval", { method: "DELETE" });
-      if (request.current !== id) return;
-      setReport(null);
-      setError(null);
-      setCleared(true);
-      setSelectedId(null);
-    } catch (caught) {
-      if (request.current !== id) return;
-      setError(caught instanceof Error ? caught.message : "Could not clear the evaluation.");
-    } finally {
-      if (request.current === id) setBusy(false);
+      if (request.current === id) {
+        setBusy(false);
+        setRunning(false);
+      }
     }
   }
 
   useEffect(() => {
-    const id = ++request.current;
-    readApi<EvalReport>("/api/eval")
-      .then((data) => {
-        if (request.current === id) setReport(data);
-      })
-      .catch(() => {
-        if (request.current === id) setReport(null);
-      })
-      .finally(() => {
-        if (request.current === id) setRunning(false);
-      });
+    void refresh();
+    // The first load is the only automatic read.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (running) {
-    return <p className="px-6 py-10 text-sm text-muted">Running the evaluation…</p>;
-  }
-
-  if (cleared) {
-    return (
-      <div className="mx-auto w-full max-w-3xl px-4 py-10 sm:px-6">
-        <h1 className="font-serif text-4xl text-ink">Evaluation</h1>
-        <p className="mt-4 text-sm leading-6 text-muted">The database is empty. Nothing is stored.</p>
-        <button
-          type="button"
-          onClick={() => void runEvaluation()}
-          className="mt-6 rounded-full bg-accent px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-accent-hover"
-        >
-          Run evaluation
-        </button>
-      </div>
-    );
+    return <p className="px-6 py-10 text-sm text-muted">Loading the cases…</p>;
   }
 
   if (error) {
@@ -96,7 +61,7 @@ export function EvalBoard() {
         <p className="mt-4 text-sm leading-6 text-muted">{error}</p>
         <button
           type="button"
-          onClick={() => void runEvaluation()}
+          onClick={() => void refresh()}
           className="mt-6 rounded-full bg-accent px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-accent-hover"
         >
           Try again
@@ -109,14 +74,15 @@ export function EvalBoard() {
     return (
       <div className="mx-auto w-full max-w-3xl px-4 py-10 sm:px-6">
         <h1 className="font-serif text-4xl text-ink">Evaluation</h1>
-        <p className="mt-4 text-sm leading-6 text-muted">The database is empty. Nothing is stored.</p>
-        <button
-          type="button"
-          onClick={() => void runEvaluation()}
-          className="mt-6 rounded-full bg-accent px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-accent-hover"
+        <p className="mt-4 text-sm leading-6 text-muted">
+          No cases yet. Upload documents on the workbench and this page will score those reads.
+        </p>
+        <Link
+          href="/"
+          className="mt-6 inline-block rounded-full bg-accent px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-accent-hover"
         >
-          Run evaluation
-        </button>
+          Open the workbench
+        </Link>
       </div>
     );
   }
@@ -127,36 +93,33 @@ export function EvalBoard() {
         <div className="max-w-2xl">
           <h1 className="font-serif text-4xl tracking-tight text-ink sm:text-5xl">Evaluation</h1>
           <p className="mt-3 text-sm leading-6 text-muted">
-            Field accuracy is the labelled pack. Exception precision and recall score those bundles. The routing
-            rates below are generated variants of the clean packet. False auto-clear is a bad invoice that was cleared,
-            divided by every automatic clear. Cost is the prompt and completion tokens Ollama used. On the labelled
-            pack that cost is zero when the layout reader filled every required field.
+            These figures are the cases on the workbench. Latency and token cost are measured on each read. Field
+            accuracy and exception rates appear when an uploaded file matches a labelled sample.
           </p>
         </div>
         <button
           type="button"
-          onClick={() => void clearReport()}
+          onClick={() => void refresh()}
           disabled={busy}
           className="w-fit self-start rounded-full border border-line bg-card px-4 py-2 text-sm font-medium text-ink transition-colors hover:bg-paper disabled:opacity-50"
         >
-          Clear
+          Refresh
         </button>
       </header>
 
       <section className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         <Metric label="Documents processed" value={String(report.documents_processed)} />
+        <Metric label="Cases" value={report.cases == null ? "—" : String(report.cases)} />
+        <Metric label="Auto-cleared" value={report.auto_cleared == null ? "—" : String(report.auto_cleared)} />
+        <Metric label="Needs review" value={report.needs_review == null ? "—" : String(report.needs_review)} />
+        <Metric label="Rejected" value={report.rejected == null ? "—" : String(report.rejected)} />
+        <Metric label="Average confidence" value={formatPercent(report.average_confidence)} />
         <Metric label="Field accuracy" value={formatPercent(report.field_accuracy, 1)} />
         <Metric label="Exception precision" value={formatPercent(report.exception_precision, 1)} />
         <Metric label="Exception recall" value={formatPercent(report.exception_recall, 1)} />
         <Metric label="Average latency" value={seconds(report.average_latency_ms)} />
         <Metric label="P95 latency" value={seconds(report.p95_latency_ms)} />
         <Metric label="Average cost / document" value={tokens(averageTokens(report))} />
-        <Metric label="Variant cases" value={report.variant_cases == null ? "—" : String(report.variant_cases)} />
-        <Metric label="False auto-clear" value={formatPercent(report.false_auto_clear_rate, 1)} />
-        <Metric label="Auto-clear precision" value={formatPercent(report.auto_clear_precision, 1)} />
-        <Metric label="Auto-clear recall" value={formatPercent(report.auto_clear_recall, 1)} />
-        <Metric label="False rejection" value={formatPercent(report.false_rejection_rate, 1)} />
-        <Metric label="Human review rate" value={formatPercent(report.human_review_rate, 1)} />
       </section>
 
       <p className="text-sm text-muted">
@@ -272,7 +235,7 @@ export function EvalBoard() {
 
 function DocumentPreview({ row, onClose }: { row: EvalDocument | null; onClose: () => void }) {
   if (!row) return null;
-  const src = `/backend-api/api/eval/documents/${encodeURIComponent(row.document_id)}`;
+  const src = row.file_id ? `/backend-api/api/files/${encodeURIComponent(row.file_id)}` : null;
   const image = /\.(jpe?g|png|gif|webp)$/i.test(row.document_id);
   return (
     <aside className="sticky top-4 overflow-hidden rounded-2xl border border-line bg-card">
@@ -290,11 +253,13 @@ function DocumentPreview({ row, onClose }: { row: EvalDocument | null; onClose: 
         </button>
       </div>
       <div className="bg-paper p-3">
-        {image ? (
+        {src && image ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img src={src} alt={row.document_id} className="max-h-[70vh] w-full object-contain" />
-        ) : (
+        ) : src ? (
           <iframe title={row.document_id} src={src} className="h-[70vh] w-full rounded-xl border border-line bg-white" />
+        ) : (
+          <p className="px-2 py-8 text-sm text-muted">This file is no longer on the desk.</p>
         )}
       </div>
     </aside>
@@ -319,6 +284,8 @@ function Metric({ label, value }: { label: string; value: string }) {
 }
 
 function seconds(ms: number): string {
+  if (!Number.isFinite(ms)) return "—";
+  if (ms < 1000) return `${Math.round(ms)} ms`;
   return `${(ms / 1000).toFixed(2)} sec`;
 }
 

@@ -7,7 +7,7 @@ Digital PDFs have a text layer. A complete text layer scores 100%. A text layer 
 
 The skewed `.jpg` files need OCR or a vision model. `20-inv-5520-gupta-hindi.jpg` is mixed Hindi and English. `27` through `29` are straight photographs of a clean trio.
 
-Upload each success trio on its own. Matching the whole pack in one case mixes the planted errors into the clean sets.
+Upload each success trio on its own. Matching the whole pack in one case mixes the planted errors into the clean sets. The workbench holds 20 files at a time. A case is three documents, or four when the duplicate invoice is included.
 
 ## Cases
 

@@ -49,6 +49,7 @@ def test_clear_removes_files_cases_and_progress(client):
     assert intake["status"] == "idle"
     assert intake["uploaded"] == 0
     assert intake["message"] == ""
+    assert client.get("/api/eval").status_code == 404
 
 
 def _wait_for_intake(client):
@@ -64,35 +65,32 @@ def _wait_for_intake(client):
     raise AssertionError(last)
 
 
-def test_eval_clear_deletes_database_cases(client):
+def test_eval_follows_the_open_cases(client):
+    assert client.get("/api/eval").status_code == 404
+
     uploaded = client.post("/api/files", files=[("files", ("note.txt", b"hello", "text/plain"))])
     assert uploaded.status_code == 200
     _wait_for_intake(client)
-    data = get_settings().data_dir
-    assert (data / "checkpoints.sqlite").is_file()
-    assert client.get("/api/runs").json()["runs"]
 
-    cleared = client.delete("/api/eval")
+    report = client.get("/api/eval")
+    assert report.status_code == 200
+    body = report.json()
+    assert body["documents_processed"] == 1
+    assert body["cases"] == 1
+    assert body["documents"][0]["document_id"] == "note.txt"
+    assert body["documents"][0]["file_id"]
+    refreshed = client.post("/api/eval")
+    assert refreshed.status_code == 200
+    assert refreshed.json()["documents_processed"] == 1
+
+    cleared = client.post("/api/clear")
     assert cleared.status_code == 200
-    assert cleared.json()["cleared"] is True
-    assert client.get("/api/runs").json()["runs"] == []
-    assert not (data / "checkpoints.sqlite").exists()
-    assert not (data / "eval_report.json").exists()
     assert client.get("/api/eval").status_code == 404
-    assert client.get("/api/files").json()["files"]
 
 
-def test_post_eval_runs_the_labelled_pack(client, monkeypatch):
-    report = {"documents_processed": 4, "documents": [], "bundles": []}
-
-    def fake_run():
-        return report
-
-    monkeypatch.setattr("app.api.eval.run_evaluation", fake_run)
+def test_post_eval_without_cases_is_empty(client):
     created = client.post("/api/eval")
-    assert created.status_code == 200
-    assert created.json()["documents_processed"] == 4
-    assert client.get("/api/eval").json()["documents_processed"] == 4
+    assert created.status_code == 404
 
 
 def test_sample_document_is_served_inline(client):

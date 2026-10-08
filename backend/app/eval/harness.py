@@ -186,6 +186,7 @@ def score_processed(
         document_rows.append(
             {
                 "document_id": name,
+                "file_id": extraction.get("file_id"),
                 "presentation": presentation,
                 "language": language,
                 "extractor": extraction.get("extractor"),
@@ -241,6 +242,83 @@ def score_processed(
         "exception_recall": ratio(true_positive, true_positive + false_negative),
         "validation_precision": ratio(validation_tp, validation_tp + validation_fp),
         "validation_recall": ratio(validation_tp, validation_tp + validation_fn),
+        "average_latency_ms": (sum(latencies_ms) / len(latencies_ms)) if latencies_ms else 0,
+        "p95_latency_ms": percentile(latencies_ms, 0.95),
+        "average_tokens": (sum(token_counts) / len(token_counts)) if token_counts else 0,
+        "auto_clear_confidence": settings.auto_clear_confidence,
+        "flag_confidence": settings.flag_confidence,
+        "documents": document_rows,
+        "bundles": bundle_rows,
+    }
+
+
+def case_report() -> dict | None:
+    """Score the cases on the desk. Nothing is filled in from the sample pack."""
+    from app.pipeline.graph import graph_state
+    from app.services.run_store import list_runs
+
+    summaries = list_runs()
+    if not summaries:
+        return None
+
+    labels, bundles = _load_labels()
+    document_rows: list[dict] = []
+    bundle_rows: list[dict] = []
+    seen_files: set[str] = set()
+    seen_bundles: set[str] = set()
+
+    for summary in summaries:
+        snapshot = graph_state({"configurable": {"thread_id": summary.id}})
+        values = getattr(snapshot, "values", None) or {}
+        if not values:
+            continue
+        extractions = [item for item in values.get("extractions") or [] if isinstance(item, dict)]
+        part = score_processed(
+            extractions,
+            latencies=list(values.get("document_latencies") or []),
+            match=values.get("match") if isinstance(values.get("match"), dict) else None,
+            validation_issues=list(values.get("validation_issues") or []),
+            labels=labels,
+            bundles=bundles,
+        )
+        for row in part["documents"]:
+            key = str(row.get("file_id") or row["document_id"])
+            if key in seen_files:
+                continue
+            seen_files.add(key)
+            document_rows.append(row)
+        for bundle in part["bundles"]:
+            bundle_id = str(bundle.get("bundle_id") or "")
+            if bundle_id in seen_bundles:
+                continue
+            seen_bundles.add(bundle_id)
+            bundle_rows.append(bundle)
+
+    field_correct = sum(int(row["field_correct"]) for row in document_rows)
+    field_total = sum(int(row["field_total"]) for row in document_rows)
+    bundle_pairs = [
+        (list(bundle["expected_exceptions"]), list(bundle["predicted_exceptions"])) for bundle in bundle_rows
+    ]
+    true_positive, false_positive, false_negative = exception_counts(bundle_pairs)
+    latencies_ms = [int(row["latency_ms"]) for row in document_rows]
+    token_counts = [int(row["tokens"]) for row in document_rows]
+    confidences = [item.confidence for item in summaries if item.confidence is not None]
+    settings = get_settings()
+    return {
+        "documents_processed": len(document_rows),
+        "cases": len(summaries),
+        "auto_cleared": sum(1 for item in summaries if item.routing == "auto_clear"),
+        "needs_review": sum(1 for item in summaries if item.routing == "flag"),
+        "rejected": sum(1 for item in summaries if item.routing == "reject"),
+        "average_confidence": (sum(confidences) / len(confidences)) if confidences else None,
+        "field_correct": field_correct,
+        "field_total": field_total,
+        "field_accuracy": ratio(field_correct, field_total),
+        "exception_true_positive": true_positive,
+        "exception_false_positive": false_positive,
+        "exception_false_negative": false_negative,
+        "exception_precision": ratio(true_positive, true_positive + false_positive),
+        "exception_recall": ratio(true_positive, true_positive + false_negative),
         "average_latency_ms": (sum(latencies_ms) / len(latencies_ms)) if latencies_ms else 0,
         "p95_latency_ms": percentile(latencies_ms, 0.95),
         "average_tokens": (sum(token_counts) / len(token_counts)) if token_counts else 0,

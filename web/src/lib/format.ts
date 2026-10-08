@@ -1,22 +1,9 @@
-import type { Routing, RunSummary } from "@/lib/api/types";
+import type { Routing } from "@/lib/api/types";
 
-const MANUAL_MINUTES = 25;
-const ROUTE_MINUTES: Record<Routing, number> = {
-  auto_clear: 2,
-  flag: 8,
-  reject: 20,
-};
-
-export function minutesSaved(runs: RunSummary[]): number {
-  return runs.reduce((total, run) => {
-    if (!run.routing) return total;
-    return total + Math.max(0, MANUAL_MINUTES - ROUTE_MINUTES[run.routing]);
-  }, 0);
-}
-
-export function formatHours(minutes: number): string {
-  const hours = minutes / 60;
-  return `${hours.toFixed(1)} hours`;
+export function formatDuration(ms: number): string {
+  if (!Number.isFinite(ms)) return "—";
+  if (ms < 1000) return `${Math.round(ms)} ms`;
+  return `${(ms / 1000).toFixed(2)} sec`;
 }
 
 export function formatMoney(amount: string | number | null | undefined, currency: string | null): string {

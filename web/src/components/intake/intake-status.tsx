@@ -23,20 +23,25 @@ export function IntakeStatusButton() {
   useEffect(() => {
     let cancelled = false;
 
+    let timer = 0;
+
     async function poll() {
+      let wait = 5000;
       try {
         const next = await readApi<IntakeStatus>("/api/intake");
-        if (!cancelled) setIntake(next);
+        if (cancelled) return;
+        setIntake(next);
+        if (next.status === "running") wait = 1000;
       } catch {
         if (!cancelled) setIntake(EMPTY);
       }
+      if (!cancelled) timer = window.setTimeout(() => void poll(), wait);
     }
 
     void poll();
-    const timer = window.setInterval(() => void poll(), 1000);
     return () => {
       cancelled = true;
-      window.clearInterval(timer);
+      window.clearTimeout(timer);
     };
   }, []);
 

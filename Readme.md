@@ -54,7 +54,7 @@ The match itself is plain Python. We compare vendor, currency, quantity, price, 
 
 ### How we start it
 
-**Docker Compose** starts Redis, the API, and the website together. The language model stays on your Mac. Docker only calls it there.
+**Docker Compose** starts Redis, the API, and the website together. From this folder, run `docker compose up --build`, then open http://localhost:3000. Pull the model once with `ollama pull llama3.2`. The language model stays on your Mac. Docker only calls it there. The 29 sample files are already in `backend/sample_data/documents`.
 
 The high-level design, with the architecture and the flow, is in [HLD.md](HLD.md).
 

@@ -96,6 +96,7 @@ export default function ReadoutPage() {
             a compliance archive.
           </li>
           <li>The 0.95 and 0.70 thresholds are starter values. They need calibration on real AP history.</li>
+          <li>Latency in the score is wall time for one document on this machine.</li>
           <li>Email sending needs an enterprise gateway and the same human approval control.</li>
           <li>The generated variants test the rules. They do not replace a history of real vendor paper.</li>
         </ul>
