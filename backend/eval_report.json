@@ -1,0 +1,477 @@
+{
+  "documents_processed": 20,
+  "field_correct": 420,
+  "field_total": 424,
+  "field_accuracy": 0.9905660377358491,
+  "exception_true_positive": 7,
+  "exception_false_positive": 0,
+  "exception_false_negative": 0,
+  "exception_precision": 1.0,
+  "exception_recall": 1.0,
+  "validation_precision": 1.0,
+  "validation_recall": 1.0,
+  "average_latency_ms": 4060.7,
+  "p95_latency_ms": 2988.0,
+  "average_tokens": 0.0,
+  "auto_clear_confidence": 0.95,
+  "flag_confidence": 0.7,
+  "documents": [
+    {
+      "document_id": "01-po-24018-apex-steel.pdf",
+      "presentation": "digital",
+      "language": "en",
+      "extractor": "pdf",
+      "field_correct": 22,
+      "field_total": 22,
+      "field_accuracy": 1.0,
+      "expected_validation": [],
+      "predicted_validation": [],
+      "confidence": 0.99,
+      "latency_ms": 48512,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "tokens": 0,
+      "warnings": []
+    },
+    {
+      "document_id": "02-inv-77821-apex-steel.pdf",
+      "presentation": "digital",
+      "language": "en",
+      "extractor": "pdf",
+      "field_correct": 23,
+      "field_total": 23,
+      "field_accuracy": 1.0,
+      "expected_validation": [],
+      "predicted_validation": [],
+      "confidence": 0.99,
+      "latency_ms": 1415,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "tokens": 0,
+      "warnings": []
+    },
+    {
+      "document_id": "03-grn-31018-apex-steel.pdf",
+      "presentation": "digital",
+      "language": "en",
+      "extractor": "pdf",
+      "field_correct": 24,
+      "field_total": 24,
+      "field_accuracy": 1.0,
+      "expected_validation": [],
+      "predicted_validation": [],
+      "confidence": 0.99,
+      "latency_ms": 1501,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "tokens": 0,
+      "warnings": []
+    },
+    {
+      "document_id": "04-po-24019-bharat-bearings.pdf",
+      "presentation": "digital",
+      "language": "en",
+      "extractor": "pdf",
+      "field_correct": 22,
+      "field_total": 22,
+      "field_accuracy": 1.0,
+      "expected_validation": [],
+      "predicted_validation": [],
+      "confidence": 0.99,
+      "latency_ms": 1464,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "tokens": 0,
+      "warnings": []
+    },
+    {
+      "document_id": "05-inv-88044-bharat-bearings.pdf",
+      "presentation": "digital",
+      "language": "en",
+      "extractor": "pdf",
+      "field_correct": 23,
+      "field_total": 23,
+      "field_accuracy": 1.0,
+      "expected_validation": [],
+      "predicted_validation": [],
+      "confidence": 0.99,
+      "latency_ms": 1333,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "tokens": 0,
+      "warnings": []
+    },
+    {
+      "document_id": "06-grn-31019-bharat-bearings.pdf",
+      "presentation": "digital",
+      "language": "en",
+      "extractor": "pdf",
+      "field_correct": 24,
+      "field_total": 24,
+      "field_accuracy": 1.0,
+      "expected_validation": [],
+      "predicted_validation": [],
+      "confidence": 0.99,
+      "latency_ms": 1401,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "tokens": 0,
+      "warnings": []
+    },
+    {
+      "document_id": "07-po-24020-lakshmi-fasteners.pdf",
+      "presentation": "digital",
+      "language": "en",
+      "extractor": "pdf",
+      "field_correct": 22,
+      "field_total": 22,
+      "field_accuracy": 1.0,
+      "expected_validation": [],
+      "predicted_validation": [],
+      "confidence": 0.99,
+      "latency_ms": 1378,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "tokens": 0,
+      "warnings": []
+    },
+    {
+      "document_id": "08-inv-99107-lakshmi-fasteners.pdf",
+      "presentation": "digital",
+      "language": "en",
+      "extractor": "pdf",
+      "field_correct": 23,
+      "field_total": 23,
+      "field_accuracy": 1.0,
+      "expected_validation": [
+        "total_mismatch"
+      ],
+      "predicted_validation": [
+        "total_mismatch"
+      ],
+      "confidence": 0.99,
+      "latency_ms": 1219,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "tokens": 0,
+      "warnings": []
+    },
+    {
+      "document_id": "09-grn-31020-lakshmi-fasteners.pdf",
+      "presentation": "digital",
+      "language": "en",
+      "extractor": "pdf",
+      "field_correct": 24,
+      "field_total": 24,
+      "field_accuracy": 1.0,
+      "expected_validation": [],
+      "predicted_validation": [],
+      "confidence": 0.99,
+      "latency_ms": 1481,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "tokens": 0,
+      "warnings": []
+    },
+    {
+      "document_id": "10-po-24021-acme-pvt.pdf",
+      "presentation": "digital",
+      "language": "en",
+      "extractor": "pdf",
+      "field_correct": 16,
+      "field_total": 16,
+      "field_accuracy": 1.0,
+      "expected_validation": [],
+      "predicted_validation": [],
+      "confidence": 0.99,
+      "latency_ms": 1300,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "tokens": 0,
+      "warnings": []
+    },
+    {
+      "document_id": "11-inv-77890-acme-private.pdf",
+      "presentation": "digital",
+      "language": "en",
+      "extractor": "pdf",
+      "field_correct": 17,
+      "field_total": 17,
+      "field_accuracy": 1.0,
+      "expected_validation": [],
+      "predicted_validation": [],
+      "confidence": 0.99,
+      "latency_ms": 1439,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "tokens": 0,
+      "warnings": []
+    },
+    {
+      "document_id": "12-grn-31021-acme-pvt.pdf",
+      "presentation": "digital",
+      "language": "en",
+      "extractor": "pdf",
+      "field_correct": 18,
+      "field_total": 18,
+      "field_accuracy": 1.0,
+      "expected_validation": [],
+      "predicted_validation": [],
+      "confidence": 0.99,
+      "latency_ms": 1455,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "tokens": 0,
+      "warnings": []
+    },
+    {
+      "document_id": "13-po-24022-western-hydraulics.pdf",
+      "presentation": "digital",
+      "language": "en",
+      "extractor": "pdf",
+      "field_correct": 16,
+      "field_total": 16,
+      "field_accuracy": 1.0,
+      "expected_validation": [],
+      "predicted_validation": [],
+      "confidence": 0.99,
+      "latency_ms": 1685,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "tokens": 0,
+      "warnings": []
+    },
+    {
+      "document_id": "14-inv-44210-deccan-hydraulics.pdf",
+      "presentation": "digital",
+      "language": "en",
+      "extractor": "pdf",
+      "field_correct": 17,
+      "field_total": 17,
+      "field_accuracy": 1.0,
+      "expected_validation": [],
+      "predicted_validation": [],
+      "confidence": 0.99,
+      "latency_ms": 1364,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "tokens": 0,
+      "warnings": []
+    },
+    {
+      "document_id": "15-grn-31022-western-hydraulics.pdf",
+      "presentation": "digital",
+      "language": "en",
+      "extractor": "pdf",
+      "field_correct": 18,
+      "field_total": 18,
+      "field_accuracy": 1.0,
+      "expected_validation": [],
+      "predicted_validation": [],
+      "confidence": 0.99,
+      "latency_ms": 1270,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "tokens": 0,
+      "warnings": []
+    },
+    {
+      "document_id": "16-inv-77821-apex-resubmit.pdf",
+      "presentation": "digital",
+      "language": "en",
+      "extractor": "pdf",
+      "field_correct": 23,
+      "field_total": 23,
+      "field_accuracy": 1.0,
+      "expected_validation": [],
+      "predicted_validation": [],
+      "confidence": 0.99,
+      "latency_ms": 1444,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "tokens": 0,
+      "warnings": []
+    },
+    {
+      "document_id": "17-inv-88044-bharat-scan.jpg",
+      "presentation": "scan",
+      "language": "en",
+      "extractor": "ocr",
+      "field_correct": 23,
+      "field_total": 23,
+      "field_accuracy": 1.0,
+      "expected_validation": [],
+      "predicted_validation": [],
+      "confidence": 0.9,
+      "latency_ms": 2785,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "tokens": 0,
+      "warnings": []
+    },
+    {
+      "document_id": "18-grn-31019-bharat-scan.jpg",
+      "presentation": "scan",
+      "language": "en",
+      "extractor": "ocr",
+      "field_correct": 24,
+      "field_total": 24,
+      "field_accuracy": 1.0,
+      "expected_validation": [],
+      "predicted_validation": [],
+      "confidence": 0.9,
+      "latency_ms": 2988,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "tokens": 0,
+      "warnings": []
+    },
+    {
+      "document_id": "19-po-24020-lakshmi-scan.jpg",
+      "presentation": "scan",
+      "language": "en",
+      "extractor": "ocr",
+      "field_correct": 22,
+      "field_total": 22,
+      "field_accuracy": 1.0,
+      "expected_validation": [],
+      "predicted_validation": [],
+      "confidence": 0.9,
+      "latency_ms": 2809,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "tokens": 0,
+      "warnings": []
+    },
+    {
+      "document_id": "20-inv-5520-gupta-hindi.jpg",
+      "presentation": "scan",
+      "language": "hi-en",
+      "extractor": "ocr",
+      "field_correct": 19,
+      "field_total": 23,
+      "field_accuracy": 0.8260869565217391,
+      "expected_validation": [],
+      "predicted_validation": [],
+      "confidence": 0.9,
+      "latency_ms": 2971,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "tokens": 0,
+      "warnings": [
+        "The vendor name was not readable. The GSTIN is being used in its place."
+      ]
+    }
+  ],
+  "bundles": [
+    {
+      "bundle_id": "apex-steel-clean",
+      "files": [
+        "01-po-24018-apex-steel.pdf",
+        "02-inv-77821-apex-steel.pdf",
+        "03-grn-31018-apex-steel.pdf"
+      ],
+      "expected_status": "matched",
+      "predicted_status": "matched",
+      "expected_exceptions": [],
+      "predicted_exceptions": []
+    },
+    {
+      "bundle_id": "bharat-partial-delivery",
+      "files": [
+        "04-po-24019-bharat-bearings.pdf",
+        "05-inv-88044-bharat-bearings.pdf",
+        "06-grn-31019-bharat-bearings.pdf"
+      ],
+      "expected_status": "exception",
+      "predicted_status": "exception",
+      "expected_exceptions": [
+        "quantity_mismatch",
+        "partial_delivery"
+      ],
+      "predicted_exceptions": [
+        "quantity_mismatch",
+        "partial_delivery"
+      ]
+    },
+    {
+      "bundle_id": "lakshmi-wrong-total",
+      "files": [
+        "07-po-24020-lakshmi-fasteners.pdf",
+        "08-inv-99107-lakshmi-fasteners.pdf",
+        "09-grn-31020-lakshmi-fasteners.pdf"
+      ],
+      "expected_status": "exception",
+      "predicted_status": "exception",
+      "expected_exceptions": [
+        "total_mismatch"
+      ],
+      "predicted_exceptions": [
+        "total_mismatch"
+      ]
+    },
+    {
+      "bundle_id": "acme-legal-name",
+      "files": [
+        "10-po-24021-acme-pvt.pdf",
+        "11-inv-77890-acme-private.pdf",
+        "12-grn-31021-acme-pvt.pdf"
+      ],
+      "expected_status": "exception",
+      "predicted_status": "exception",
+      "expected_exceptions": [
+        "vendor_mismatch"
+      ],
+      "predicted_exceptions": [
+        "vendor_mismatch"
+      ]
+    },
+    {
+      "bundle_id": "western-different-vendor",
+      "files": [
+        "13-po-24022-western-hydraulics.pdf",
+        "14-inv-44210-deccan-hydraulics.pdf",
+        "15-grn-31022-western-hydraulics.pdf"
+      ],
+      "expected_status": "exception",
+      "predicted_status": "exception",
+      "expected_exceptions": [
+        "vendor_mismatch"
+      ],
+      "predicted_exceptions": [
+        "vendor_mismatch"
+      ]
+    },
+    {
+      "bundle_id": "apex-duplicate-invoice",
+      "files": [
+        "01-po-24018-apex-steel.pdf",
+        "02-inv-77821-apex-steel.pdf",
+        "03-grn-31018-apex-steel.pdf",
+        "16-inv-77821-apex-resubmit.pdf"
+      ],
+      "expected_status": "exception",
+      "predicted_status": "exception",
+      "expected_exceptions": [
+        "duplicate_invoice"
+      ],
+      "predicted_exceptions": [
+        "duplicate_invoice"
+      ]
+    },
+    {
+      "bundle_id": "gupta-hindi-unpaired",
+      "files": [
+        "20-inv-5520-gupta-hindi.jpg"
+      ],
+      "expected_status": "incomplete",
+      "predicted_status": "incomplete",
+      "expected_exceptions": [
+        "missing_document"
+      ],
+      "predicted_exceptions": [
+        "missing_document"
+      ]
+    }
+  ]
+}

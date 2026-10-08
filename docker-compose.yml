@@ -1,0 +1,61 @@
+services:
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      AP_ENV: production
+      AP_LOG_LEVEL: INFO
+      AP_LOG_FORMAT: json
+      AP_CORS_ORIGINS: http://localhost:3000,http://127.0.0.1:3000
+      AP_REDIS_URL: redis://redis:6379/0
+      AP_OLLAMA_BASE_URL: http://host.docker.internal:11434
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      redis:
+        condition: service_healthy
+    volumes:
+      - backend-data:/app/data
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health')",
+        ]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 10s
+
+  frontend:
+    build: ./web
+    ports:
+      - "3000:3000"
+    environment:
+      BACKEND_URL: http://backend:8000
+      LOG_LEVEL: info
+    depends_on:
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:3000"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 10s
+
+volumes:
+  backend-data:

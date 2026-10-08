@@ -1,0 +1,1238 @@
+{
+  "buyer": {
+    "name": "Northwind Fabrication Pvt Ltd",
+    "address": "Plot 18, MIDC Bhosari, Pune 411026",
+    "tax_id": "27AABCN1234F1Z5"
+  },
+  "currency": "INR",
+  "documents": [
+    {
+      "file": "01-po-24018-apex-steel.pdf",
+      "presentation": "digital",
+      "language": "en",
+      "text_layer": true,
+      "planted_error": null,
+      "alternate_of": null,
+      "expected_validation": [],
+      "document": {
+        "document_number": "PO-24018",
+        "document_date": "2026-09-02",
+        "currency": "INR",
+        "vendor": {
+          "name": "Apex Steel Traders",
+          "tax_id": "27AABCA1122B1Z8",
+          "address": "Shop 4, Mundhwa Industrial Area, Pune 411036"
+        },
+        "line_items": [
+          {
+            "description": "MS plate 10mm",
+            "quantity": "40",
+            "unit": "sheet",
+            "unit_price": "2450",
+            "amount": "98000.00",
+            "sku": "MS-PL-10"
+          },
+          {
+            "description": "Welding electrode E6013",
+            "quantity": "20",
+            "unit": "kg",
+            "unit_price": "180",
+            "amount": "3600.00",
+            "sku": "WE-6013"
+          }
+        ],
+        "subtotal": "101600.00",
+        "tax": "18288.00",
+        "total": "119888.00",
+        "document_type": "purchase_order"
+      }
+    },
+    {
+      "file": "02-inv-77821-apex-steel.pdf",
+      "presentation": "digital",
+      "language": "en",
+      "text_layer": true,
+      "planted_error": null,
+      "alternate_of": null,
+      "expected_validation": [],
+      "document": {
+        "document_number": "INV-77821",
+        "document_date": "2026-09-10",
+        "currency": "INR",
+        "vendor": {
+          "name": "Apex Steel Traders",
+          "tax_id": "27AABCA1122B1Z8",
+          "address": "Shop 4, Mundhwa Industrial Area, Pune 411036"
+        },
+        "line_items": [
+          {
+            "description": "MS plate 10mm",
+            "quantity": "40",
+            "unit": "sheet",
+            "unit_price": "2450",
+            "amount": "98000.00",
+            "sku": "MS-PL-10"
+          },
+          {
+            "description": "Welding electrode E6013",
+            "quantity": "20",
+            "unit": "kg",
+            "unit_price": "180",
+            "amount": "3600.00",
+            "sku": "WE-6013"
+          }
+        ],
+        "subtotal": "101600.00",
+        "tax": "18288.00",
+        "total": "119888.00",
+        "document_type": "invoice",
+        "po_number": "PO-24018"
+      }
+    },
+    {
+      "file": "03-grn-31018-apex-steel.pdf",
+      "presentation": "digital",
+      "language": "en",
+      "text_layer": true,
+      "planted_error": null,
+      "alternate_of": null,
+      "expected_validation": [],
+      "document": {
+        "document_number": "GRN-31018",
+        "document_date": "2026-09-09",
+        "currency": "INR",
+        "vendor": {
+          "name": "Apex Steel Traders",
+          "tax_id": "27AABCA1122B1Z8",
+          "address": "Shop 4, Mundhwa Industrial Area, Pune 411036"
+        },
+        "line_items": [
+          {
+            "description": "MS plate 10mm",
+            "quantity": "40",
+            "unit": "sheet",
+            "unit_price": "2450",
+            "amount": "98000.00",
+            "sku": "MS-PL-10"
+          },
+          {
+            "description": "Welding electrode E6013",
+            "quantity": "20",
+            "unit": "kg",
+            "unit_price": "180",
+            "amount": "3600.00",
+            "sku": "WE-6013"
+          }
+        ],
+        "subtotal": "101600.00",
+        "tax": "18288.00",
+        "total": "119888.00",
+        "document_type": "goods_receipt",
+        "po_number": "PO-24018",
+        "received_by": "R. Kulkarni"
+      }
+    },
+    {
+      "file": "04-po-24019-bharat-bearings.pdf",
+      "presentation": "digital",
+      "language": "en",
+      "text_layer": true,
+      "planted_error": null,
+      "alternate_of": null,
+      "expected_validation": [],
+      "document": {
+        "document_number": "PO-24019",
+        "document_date": "2026-09-04",
+        "currency": "INR",
+        "vendor": {
+          "name": "Bharat Bearings Pvt Ltd",
+          "tax_id": "27AABCB3344C1Z6",
+          "address": "E-22, Bhosari MIDC, Pune 411026"
+        },
+        "line_items": [
+          {
+            "description": "Deep groove ball bearing 6205",
+            "quantity": "100",
+            "unit": "nos",
+            "unit_price": "340",
+            "amount": "34000.00",
+            "sku": "BRG-6205"
+          },
+          {
+            "description": "Bearing housing 6205",
+            "quantity": "100",
+            "unit": "nos",
+            "unit_price": "95",
+            "amount": "9500.00",
+            "sku": "BRG-H-6205"
+          }
+        ],
+        "subtotal": "43500.00",
+        "tax": "7830.00",
+        "total": "51330.00",
+        "document_type": "purchase_order"
+      }
+    },
+    {
+      "file": "05-inv-88044-bharat-bearings.pdf",
+      "presentation": "digital",
+      "language": "en",
+      "text_layer": true,
+      "planted_error": "partial_delivery",
+      "alternate_of": null,
+      "expected_validation": [],
+      "document": {
+        "document_number": "INV-88044",
+        "document_date": "2026-09-16",
+        "currency": "INR",
+        "vendor": {
+          "name": "Bharat Bearings Pvt Ltd",
+          "tax_id": "27AABCB3344C1Z6",
+          "address": "E-22, Bhosari MIDC, Pune 411026"
+        },
+        "line_items": [
+          {
+            "description": "Deep groove ball bearing 6205",
+            "quantity": "100",
+            "unit": "nos",
+            "unit_price": "340",
+            "amount": "34000.00",
+            "sku": "BRG-6205"
+          },
+          {
+            "description": "Bearing housing 6205",
+            "quantity": "100",
+            "unit": "nos",
+            "unit_price": "95",
+            "amount": "9500.00",
+            "sku": "BRG-H-6205"
+          }
+        ],
+        "subtotal": "43500.00",
+        "tax": "7830.00",
+        "total": "51330.00",
+        "document_type": "invoice",
+        "po_number": "PO-24019"
+      }
+    },
+    {
+      "file": "06-grn-31019-bharat-bearings.pdf",
+      "presentation": "digital",
+      "language": "en",
+      "text_layer": true,
+      "planted_error": "partial_delivery",
+      "alternate_of": null,
+      "expected_validation": [],
+      "document": {
+        "document_number": "GRN-31019",
+        "document_date": "2026-09-15",
+        "currency": "INR",
+        "vendor": {
+          "name": "Bharat Bearings Pvt Ltd",
+          "tax_id": "27AABCB3344C1Z6",
+          "address": "E-22, Bhosari MIDC, Pune 411026"
+        },
+        "line_items": [
+          {
+            "description": "Deep groove ball bearing 6205",
+            "quantity": "60",
+            "unit": "nos",
+            "unit_price": "340",
+            "amount": "20400.00",
+            "sku": "BRG-6205"
+          },
+          {
+            "description": "Bearing housing 6205",
+            "quantity": "100",
+            "unit": "nos",
+            "unit_price": "95",
+            "amount": "9500.00",
+            "sku": "BRG-H-6205"
+          }
+        ],
+        "subtotal": "29900.00",
+        "tax": "0",
+        "total": "29900.00",
+        "document_type": "goods_receipt",
+        "po_number": "PO-24019",
+        "received_by": "S. Patil"
+      }
+    },
+    {
+      "file": "07-po-24020-lakshmi-fasteners.pdf",
+      "presentation": "digital",
+      "language": "en",
+      "text_layer": true,
+      "planted_error": null,
+      "alternate_of": null,
+      "expected_validation": [],
+      "document": {
+        "document_number": "PO-24020",
+        "document_date": "2026-09-05",
+        "currency": "INR",
+        "vendor": {
+          "name": "Lakshmi Fasteners",
+          "tax_id": "27AABCL7788D1Z4",
+          "address": "Gala 7, Taloja MIDC, Navi Mumbai 410208"
+        },
+        "line_items": [
+          {
+            "description": "Hex bolt M10 x 40",
+            "quantity": "500",
+            "unit": "nos",
+            "unit_price": "12.50",
+            "amount": "6250.00",
+            "sku": "HX-M10"
+          },
+          {
+            "description": "Nyloc nut M10",
+            "quantity": "500",
+            "unit": "nos",
+            "unit_price": "4.00",
+            "amount": "2000.00",
+            "sku": "NY-M10"
+          }
+        ],
+        "subtotal": "8250.00",
+        "tax": "1485.00",
+        "total": "9735.00",
+        "document_type": "purchase_order"
+      }
+    },
+    {
+      "file": "08-inv-99107-lakshmi-fasteners.pdf",
+      "presentation": "digital",
+      "language": "en",
+      "text_layer": true,
+      "planted_error": "wrong_total",
+      "alternate_of": null,
+      "expected_validation": [
+        "total_mismatch"
+      ],
+      "document": {
+        "document_number": "INV-99107",
+        "document_date": "2026-09-14",
+        "currency": "INR",
+        "vendor": {
+          "name": "Lakshmi Fasteners",
+          "tax_id": "27AABCL7788D1Z4",
+          "address": "Gala 7, Taloja MIDC, Navi Mumbai 410208"
+        },
+        "line_items": [
+          {
+            "description": "Hex bolt M10 x 40",
+            "quantity": "500",
+            "unit": "nos",
+            "unit_price": "12.50",
+            "amount": "6250.00",
+            "sku": "HX-M10"
+          },
+          {
+            "description": "Nyloc nut M10",
+            "quantity": "500",
+            "unit": "nos",
+            "unit_price": "4.00",
+            "amount": "2000.00",
+            "sku": "NY-M10"
+          }
+        ],
+        "subtotal": "8250.00",
+        "tax": "1485.00",
+        "total": "9375.00",
+        "document_type": "invoice",
+        "po_number": "PO-24020"
+      }
+    },
+    {
+      "file": "09-grn-31020-lakshmi-fasteners.pdf",
+      "presentation": "digital",
+      "language": "en",
+      "text_layer": true,
+      "planted_error": null,
+      "alternate_of": null,
+      "expected_validation": [],
+      "document": {
+        "document_number": "GRN-31020",
+        "document_date": "2026-09-12",
+        "currency": "INR",
+        "vendor": {
+          "name": "Lakshmi Fasteners",
+          "tax_id": "27AABCL7788D1Z4",
+          "address": "Gala 7, Taloja MIDC, Navi Mumbai 410208"
+        },
+        "line_items": [
+          {
+            "description": "Hex bolt M10 x 40",
+            "quantity": "500",
+            "unit": "nos",
+            "unit_price": "12.50",
+            "amount": "6250.00",
+            "sku": "HX-M10"
+          },
+          {
+            "description": "Nyloc nut M10",
+            "quantity": "500",
+            "unit": "nos",
+            "unit_price": "4.00",
+            "amount": "2000.00",
+            "sku": "NY-M10"
+          }
+        ],
+        "subtotal": "8250.00",
+        "tax": "1485.00",
+        "total": "9735.00",
+        "document_type": "goods_receipt",
+        "po_number": "PO-24020",
+        "received_by": "A. Shaikh"
+      }
+    },
+    {
+      "file": "10-po-24021-acme-pvt.pdf",
+      "presentation": "digital",
+      "language": "en",
+      "text_layer": true,
+      "planted_error": null,
+      "alternate_of": null,
+      "expected_validation": [],
+      "document": {
+        "document_number": "PO-24021",
+        "document_date": "2026-09-08",
+        "currency": "INR",
+        "vendor": {
+          "name": "Acme Pvt Ltd",
+          "tax_id": "27AABCA9988A1Z1",
+          "address": "14, Industrial Estate, Hadapsar, Pune 411013"
+        },
+        "line_items": [
+          {
+            "description": "Hydraulic hose 1/2 inch",
+            "quantity": "25",
+            "unit": "mtr",
+            "unit_price": "860",
+            "amount": "21500.00",
+            "sku": "HH-12"
+          }
+        ],
+        "subtotal": "21500.00",
+        "tax": "3870.00",
+        "total": "25370.00",
+        "document_type": "purchase_order"
+      }
+    },
+    {
+      "file": "11-inv-77890-acme-private.pdf",
+      "presentation": "digital",
+      "language": "en",
+      "text_layer": true,
+      "planted_error": "vendor_name_variant",
+      "alternate_of": null,
+      "expected_validation": [],
+      "document": {
+        "document_number": "INV-77890",
+        "document_date": "2026-09-19",
+        "currency": "INR",
+        "vendor": {
+          "name": "ACME Private Limited",
+          "tax_id": "27AABCA9988A1Z1",
+          "address": "14, Industrial Estate, Hadapsar, Pune 411013"
+        },
+        "line_items": [
+          {
+            "description": "Hydraulic hose 1/2 inch",
+            "quantity": "25",
+            "unit": "mtr",
+            "unit_price": "860",
+            "amount": "21500.00",
+            "sku": "HH-12"
+          }
+        ],
+        "subtotal": "21500.00",
+        "tax": "3870.00",
+        "total": "25370.00",
+        "document_type": "invoice",
+        "po_number": "PO-24021"
+      }
+    },
+    {
+      "file": "12-grn-31021-acme-pvt.pdf",
+      "presentation": "digital",
+      "language": "en",
+      "text_layer": true,
+      "planted_error": null,
+      "alternate_of": null,
+      "expected_validation": [],
+      "document": {
+        "document_number": "GRN-31021",
+        "document_date": "2026-09-18",
+        "currency": "INR",
+        "vendor": {
+          "name": "Acme Pvt Ltd",
+          "tax_id": "27AABCA9988A1Z1",
+          "address": "14, Industrial Estate, Hadapsar, Pune 411013"
+        },
+        "line_items": [
+          {
+            "description": "Hydraulic hose 1/2 inch",
+            "quantity": "25",
+            "unit": "mtr",
+            "unit_price": "860",
+            "amount": "21500.00",
+            "sku": "HH-12"
+          }
+        ],
+        "subtotal": "21500.00",
+        "tax": "3870.00",
+        "total": "25370.00",
+        "document_type": "goods_receipt",
+        "po_number": "PO-24021",
+        "received_by": "M. Deshmukh"
+      }
+    },
+    {
+      "file": "13-po-24022-western-hydraulics.pdf",
+      "presentation": "digital",
+      "language": "en",
+      "text_layer": true,
+      "planted_error": null,
+      "alternate_of": null,
+      "expected_validation": [],
+      "document": {
+        "document_number": "PO-24022",
+        "document_date": "2026-09-03",
+        "currency": "INR",
+        "vendor": {
+          "name": "Western Hydraulics Ltd",
+          "tax_id": "27AABCW4455C1Z2",
+          "address": "Survey 42, Chinchwad, Pune 411019"
+        },
+        "line_items": [
+          {
+            "description": "Hydraulic gear pump",
+            "quantity": "4",
+            "unit": "nos",
+            "unit_price": "18750",
+            "amount": "75000.00",
+            "sku": "HP-220"
+          }
+        ],
+        "subtotal": "75000.00",
+        "tax": "13500.00",
+        "total": "88500.00",
+        "document_type": "purchase_order"
+      }
+    },
+    {
+      "file": "14-inv-44210-deccan-hydraulics.pdf",
+      "presentation": "digital",
+      "language": "en",
+      "text_layer": true,
+      "planted_error": "different_vendor",
+      "alternate_of": null,
+      "expected_validation": [],
+      "document": {
+        "document_number": "INV-44210",
+        "document_date": "2026-09-18",
+        "currency": "INR",
+        "vendor": {
+          "name": "Deccan Hydraulics",
+          "tax_id": "29AADCD5566H1Z7",
+          "address": "Plot 9, Peenya 2nd Stage, Bengaluru 560058"
+        },
+        "line_items": [
+          {
+            "description": "Hydraulic gear pump",
+            "quantity": "4",
+            "unit": "nos",
+            "unit_price": "18750",
+            "amount": "75000.00",
+            "sku": "HP-220"
+          }
+        ],
+        "subtotal": "75000.00",
+        "tax": "13500.00",
+        "total": "88500.00",
+        "document_type": "invoice",
+        "po_number": "PO-24022"
+      }
+    },
+    {
+      "file": "15-grn-31022-western-hydraulics.pdf",
+      "presentation": "digital",
+      "language": "en",
+      "text_layer": true,
+      "planted_error": null,
+      "alternate_of": null,
+      "expected_validation": [],
+      "document": {
+        "document_number": "GRN-31022",
+        "document_date": "2026-09-17",
+        "currency": "INR",
+        "vendor": {
+          "name": "Western Hydraulics Ltd",
+          "tax_id": "27AABCW4455C1Z2",
+          "address": "Survey 42, Chinchwad, Pune 411019"
+        },
+        "line_items": [
+          {
+            "description": "Hydraulic gear pump",
+            "quantity": "4",
+            "unit": "nos",
+            "unit_price": "18750",
+            "amount": "75000.00",
+            "sku": "HP-220"
+          }
+        ],
+        "subtotal": "75000.00",
+        "tax": "13500.00",
+        "total": "88500.00",
+        "document_type": "goods_receipt",
+        "po_number": "PO-24022",
+        "received_by": "P. Jadhav"
+      }
+    },
+    {
+      "file": "16-inv-77821-apex-resubmit.pdf",
+      "presentation": "digital",
+      "language": "en",
+      "text_layer": true,
+      "planted_error": "duplicate_invoice_number",
+      "alternate_of": null,
+      "expected_validation": [],
+      "document": {
+        "document_number": "INV-77821",
+        "document_date": "2026-09-10",
+        "currency": "INR",
+        "vendor": {
+          "name": "Apex Steel Traders",
+          "tax_id": "27AABCA1122B1Z8",
+          "address": "Shop 4, Mundhwa Industrial Area, Pune 411036"
+        },
+        "line_items": [
+          {
+            "description": "MS plate 10mm",
+            "quantity": "40",
+            "unit": "sheet",
+            "unit_price": "2450",
+            "amount": "98000.00",
+            "sku": "MS-PL-10"
+          },
+          {
+            "description": "Welding electrode E6013",
+            "quantity": "20",
+            "unit": "kg",
+            "unit_price": "180",
+            "amount": "3600.00",
+            "sku": "WE-6013"
+          }
+        ],
+        "subtotal": "101600.00",
+        "tax": "18288.00",
+        "total": "119888.00",
+        "document_type": "invoice",
+        "po_number": "PO-24018"
+      }
+    },
+    {
+      "file": "21-po-24040-orion-castings.pdf",
+      "presentation": "digital",
+      "language": "en",
+      "text_layer": true,
+      "planted_error": null,
+      "alternate_of": null,
+      "expected_validation": [],
+      "document": {
+        "document_number": "PO-24040",
+        "document_date": "2026-09-06",
+        "currency": "INR",
+        "vendor": {
+          "name": "Orion Castings Pvt Ltd",
+          "tax_id": "27AABCO2211F1Z3",
+          "address": "Plot 6, Chakan Industrial Area, Pune 410501"
+        },
+        "line_items": [
+          {
+            "description": "Cast iron block 80mm",
+            "quantity": "12",
+            "unit": "nos",
+            "unit_price": "3200",
+            "amount": "38400.00",
+            "sku": "CI-80"
+          }
+        ],
+        "subtotal": "38400.00",
+        "tax": "6912.00",
+        "total": "45312.00",
+        "document_type": "purchase_order"
+      }
+    },
+    {
+      "file": "22-inv-10040-orion-castings.pdf",
+      "presentation": "digital",
+      "language": "en",
+      "text_layer": true,
+      "planted_error": null,
+      "alternate_of": null,
+      "expected_validation": [],
+      "document": {
+        "document_number": "INV-10040",
+        "document_date": "2026-09-11",
+        "currency": "INR",
+        "vendor": {
+          "name": "Orion Castings Pvt Ltd",
+          "tax_id": "27AABCO2211F1Z3",
+          "address": "Plot 6, Chakan Industrial Area, Pune 410501"
+        },
+        "line_items": [
+          {
+            "description": "Cast iron block 80mm",
+            "quantity": "12",
+            "unit": "nos",
+            "unit_price": "3200",
+            "amount": "38400.00",
+            "sku": "CI-80"
+          }
+        ],
+        "subtotal": "38400.00",
+        "tax": "6912.00",
+        "total": "45312.00",
+        "document_type": "invoice",
+        "po_number": "PO-24040"
+      }
+    },
+    {
+      "file": "23-grn-31040-orion-castings.pdf",
+      "presentation": "digital",
+      "language": "en",
+      "text_layer": true,
+      "planted_error": null,
+      "alternate_of": null,
+      "expected_validation": [],
+      "document": {
+        "document_number": "GRN-31040",
+        "document_date": "2026-09-11",
+        "currency": "INR",
+        "vendor": {
+          "name": "Orion Castings Pvt Ltd",
+          "tax_id": "27AABCO2211F1Z3",
+          "address": "Plot 6, Chakan Industrial Area, Pune 410501"
+        },
+        "line_items": [
+          {
+            "description": "Cast iron block 80mm",
+            "quantity": "12",
+            "unit": "nos",
+            "unit_price": "3200",
+            "amount": "38400.00",
+            "sku": "CI-80"
+          }
+        ],
+        "subtotal": "38400.00",
+        "tax": "6912.00",
+        "total": "45312.00",
+        "document_type": "goods_receipt",
+        "po_number": "PO-24040",
+        "received_by": "N. Bhosale"
+      }
+    },
+    {
+      "file": "24-po-24041-shakti-gaskets.pdf",
+      "presentation": "digital",
+      "language": "en",
+      "text_layer": true,
+      "planted_error": null,
+      "alternate_of": null,
+      "expected_validation": [],
+      "document": {
+        "document_number": "PO-24041",
+        "document_date": null,
+        "currency": "INR",
+        "vendor": {
+          "name": "Shakti Gaskets",
+          "tax_id": "27AABCS8899G1Z2",
+          "address": "Unit 3, Ranjangaon MIDC, Pune 412220"
+        },
+        "line_items": [
+          {
+            "description": "Spiral wound gasket 150mm",
+            "quantity": "80",
+            "unit": "nos",
+            "unit_price": "210",
+            "amount": "16800.00",
+            "sku": "GK-150"
+          }
+        ],
+        "subtotal": "16800.00",
+        "tax": "3024.00",
+        "total": "19824.00",
+        "document_type": "purchase_order"
+      }
+    },
+    {
+      "file": "25-inv-10041-shakti-gaskets.pdf",
+      "presentation": "digital",
+      "language": "en",
+      "text_layer": true,
+      "planted_error": null,
+      "alternate_of": null,
+      "expected_validation": [],
+      "document": {
+        "document_number": "INV-10041",
+        "document_date": null,
+        "currency": "INR",
+        "vendor": {
+          "name": "Shakti Gaskets",
+          "tax_id": "27AABCS8899G1Z2",
+          "address": "Unit 3, Ranjangaon MIDC, Pune 412220"
+        },
+        "line_items": [
+          {
+            "description": "Spiral wound gasket 150mm",
+            "quantity": "80",
+            "unit": "nos",
+            "unit_price": "210",
+            "amount": "16800.00",
+            "sku": "GK-150"
+          }
+        ],
+        "subtotal": "16800.00",
+        "tax": "3024.00",
+        "total": "19824.00",
+        "document_type": "invoice",
+        "po_number": "PO-24041"
+      }
+    },
+    {
+      "file": "26-grn-31041-shakti-gaskets.pdf",
+      "presentation": "digital",
+      "language": "en",
+      "text_layer": true,
+      "planted_error": null,
+      "alternate_of": null,
+      "expected_validation": [],
+      "document": {
+        "document_number": "GRN-31041",
+        "document_date": null,
+        "currency": "INR",
+        "vendor": {
+          "name": "Shakti Gaskets",
+          "tax_id": "27AABCS8899G1Z2",
+          "address": "Unit 3, Ranjangaon MIDC, Pune 412220"
+        },
+        "line_items": [
+          {
+            "description": "Spiral wound gasket 150mm",
+            "quantity": "80",
+            "unit": "nos",
+            "unit_price": "210",
+            "amount": "16800.00",
+            "sku": "GK-150"
+          }
+        ],
+        "subtotal": "16800.00",
+        "tax": "3024.00",
+        "total": "19824.00",
+        "document_type": "goods_receipt",
+        "po_number": "PO-24041",
+        "received_by": "K. More"
+      }
+    },
+    {
+      "file": "17-inv-88044-bharat-scan.jpg",
+      "presentation": "scan",
+      "language": "en",
+      "text_layer": false,
+      "planted_error": "partial_delivery",
+      "alternate_of": "05-inv-88044-bharat-bearings.pdf",
+      "expected_validation": [],
+      "document": {
+        "document_number": "INV-88044",
+        "document_date": "2026-09-16",
+        "currency": "INR",
+        "vendor": {
+          "name": "Bharat Bearings Pvt Ltd",
+          "tax_id": "27AABCB3344C1Z6",
+          "address": "E-22, Bhosari MIDC, Pune 411026"
+        },
+        "line_items": [
+          {
+            "description": "Deep groove ball bearing 6205",
+            "quantity": "100",
+            "unit": "nos",
+            "unit_price": "340",
+            "amount": "34000.00",
+            "sku": "BRG-6205"
+          },
+          {
+            "description": "Bearing housing 6205",
+            "quantity": "100",
+            "unit": "nos",
+            "unit_price": "95",
+            "amount": "9500.00",
+            "sku": "BRG-H-6205"
+          }
+        ],
+        "subtotal": "43500.00",
+        "tax": "7830.00",
+        "total": "51330.00",
+        "document_type": "invoice",
+        "po_number": "PO-24019"
+      }
+    },
+    {
+      "file": "18-grn-31019-bharat-scan.jpg",
+      "presentation": "scan",
+      "language": "en",
+      "text_layer": false,
+      "planted_error": "partial_delivery",
+      "alternate_of": "06-grn-31019-bharat-bearings.pdf",
+      "expected_validation": [],
+      "document": {
+        "document_number": "GRN-31019",
+        "document_date": "2026-09-15",
+        "currency": "INR",
+        "vendor": {
+          "name": "Bharat Bearings Pvt Ltd",
+          "tax_id": "27AABCB3344C1Z6",
+          "address": "E-22, Bhosari MIDC, Pune 411026"
+        },
+        "line_items": [
+          {
+            "description": "Deep groove ball bearing 6205",
+            "quantity": "60",
+            "unit": "nos",
+            "unit_price": "340",
+            "amount": "20400.00",
+            "sku": "BRG-6205"
+          },
+          {
+            "description": "Bearing housing 6205",
+            "quantity": "100",
+            "unit": "nos",
+            "unit_price": "95",
+            "amount": "9500.00",
+            "sku": "BRG-H-6205"
+          }
+        ],
+        "subtotal": "29900.00",
+        "tax": "0",
+        "total": "29900.00",
+        "document_type": "goods_receipt",
+        "po_number": "PO-24019",
+        "received_by": "S. Patil"
+      }
+    },
+    {
+      "file": "19-po-24020-lakshmi-scan.jpg",
+      "presentation": "scan",
+      "language": "en",
+      "text_layer": false,
+      "planted_error": null,
+      "alternate_of": "07-po-24020-lakshmi-fasteners.pdf",
+      "expected_validation": [],
+      "document": {
+        "document_number": "PO-24020",
+        "document_date": "2026-09-05",
+        "currency": "INR",
+        "vendor": {
+          "name": "Lakshmi Fasteners",
+          "tax_id": "27AABCL7788D1Z4",
+          "address": "Gala 7, Taloja MIDC, Navi Mumbai 410208"
+        },
+        "line_items": [
+          {
+            "description": "Hex bolt M10 x 40",
+            "quantity": "500",
+            "unit": "nos",
+            "unit_price": "12.50",
+            "amount": "6250.00",
+            "sku": "HX-M10"
+          },
+          {
+            "description": "Nyloc nut M10",
+            "quantity": "500",
+            "unit": "nos",
+            "unit_price": "4.00",
+            "amount": "2000.00",
+            "sku": "NY-M10"
+          }
+        ],
+        "subtotal": "8250.00",
+        "tax": "1485.00",
+        "total": "9735.00",
+        "document_type": "purchase_order"
+      }
+    },
+    {
+      "file": "20-inv-5520-gupta-hindi.jpg",
+      "presentation": "scan",
+      "language": "hi-en",
+      "text_layer": false,
+      "planted_error": null,
+      "alternate_of": null,
+      "expected_validation": [],
+      "document": {
+        "document_number": "INV-5520",
+        "document_date": "2026-09-18",
+        "currency": "INR",
+        "vendor": {
+          "name": "\u0917\u0941\u092a\u094d\u0924\u093e \u0907\u0902\u0921\u0938\u094d\u091f\u094d\u0930\u093f\u092f\u0932 \u0938\u092a\u094d\u0932\u093e\u0908",
+          "tax_id": "27AABCG6677E1Z9",
+          "address": "\u0926\u0941\u0915\u093e\u0928 12, \u092c\u093e\u091c\u093e\u0930 \u0930\u094b\u0921, \u092a\u093f\u0902\u092a\u0930\u0940, \u092a\u0941\u0923\u0947 411018"
+        },
+        "line_items": [
+          {
+            "description": "\u0915\u093e\u091f\u0928\u0947 \u0915\u0940 \u0921\u093f\u0938\u094d\u0915 4 \u0907\u0902\u091a / Cutting disc 4 inch",
+            "quantity": "200",
+            "unit": "nos",
+            "unit_price": "45",
+            "amount": "9000.00",
+            "sku": "CD-4"
+          },
+          {
+            "description": "\u0938\u0941\u0930\u0915\u094d\u0937\u093e \u0926\u0938\u094d\u0924\u093e\u0928\u0947 / Safety gloves",
+            "quantity": "50",
+            "unit": "pair",
+            "unit_price": "120",
+            "amount": "6000.00",
+            "sku": "SG-L"
+          }
+        ],
+        "subtotal": "15000.00",
+        "tax": "2700.00",
+        "total": "17700.00",
+        "document_type": "invoice",
+        "po_number": "PO-24030"
+      }
+    },
+    {
+      "file": "27-po-24042-metro-polymers.jpg",
+      "presentation": "scan",
+      "language": "en",
+      "text_layer": false,
+      "planted_error": null,
+      "alternate_of": null,
+      "expected_validation": [],
+      "document": {
+        "document_number": "PO-24042",
+        "document_date": "2026-09-08",
+        "currency": "INR",
+        "vendor": {
+          "name": "Metro Polymers",
+          "tax_id": "27AABCM4455H1Z8",
+          "address": "Shed 11, Pirangut Industrial Area, Pune 412115"
+        },
+        "line_items": [
+          {
+            "description": "Polypropylene sheet 25mm",
+            "quantity": "30",
+            "unit": "sheet",
+            "unit_price": "640",
+            "amount": "19200.00",
+            "sku": "PP-25"
+          }
+        ],
+        "subtotal": "19200.00",
+        "tax": "3456.00",
+        "total": "22656.00",
+        "document_type": "purchase_order"
+      }
+    },
+    {
+      "file": "28-inv-10042-metro-polymers.jpg",
+      "presentation": "scan",
+      "language": "en",
+      "text_layer": false,
+      "planted_error": null,
+      "alternate_of": null,
+      "expected_validation": [],
+      "document": {
+        "document_number": "INV-10042",
+        "document_date": "2026-09-15",
+        "currency": "INR",
+        "vendor": {
+          "name": "Metro Polymers",
+          "tax_id": "27AABCM4455H1Z8",
+          "address": "Shed 11, Pirangut Industrial Area, Pune 412115"
+        },
+        "line_items": [
+          {
+            "description": "Polypropylene sheet 25mm",
+            "quantity": "30",
+            "unit": "sheet",
+            "unit_price": "640",
+            "amount": "19200.00",
+            "sku": "PP-25"
+          }
+        ],
+        "subtotal": "19200.00",
+        "tax": "3456.00",
+        "total": "22656.00",
+        "document_type": "invoice",
+        "po_number": "PO-24042"
+      }
+    },
+    {
+      "file": "29-grn-31042-metro-polymers.jpg",
+      "presentation": "scan",
+      "language": "en",
+      "text_layer": false,
+      "planted_error": null,
+      "alternate_of": null,
+      "expected_validation": [],
+      "document": {
+        "document_number": "GRN-31042",
+        "document_date": "2026-09-15",
+        "currency": "INR",
+        "vendor": {
+          "name": "Metro Polymers",
+          "tax_id": "27AABCM4455H1Z8",
+          "address": "Shed 11, Pirangut Industrial Area, Pune 412115"
+        },
+        "line_items": [
+          {
+            "description": "Polypropylene sheet 25mm",
+            "quantity": "30",
+            "unit": "sheet",
+            "unit_price": "640",
+            "amount": "19200.00",
+            "sku": "PP-25"
+          }
+        ],
+        "subtotal": "19200.00",
+        "tax": "3456.00",
+        "total": "22656.00",
+        "document_type": "goods_receipt",
+        "po_number": "PO-24042",
+        "received_by": "A. Pawar"
+      }
+    }
+  ],
+  "bundles": [
+    {
+      "id": "apex-steel-clean",
+      "files": [
+        "01-po-24018-apex-steel.pdf",
+        "02-inv-77821-apex-steel.pdf",
+        "03-grn-31018-apex-steel.pdf"
+      ],
+      "expected_status": "matched",
+      "expected_exceptions": [],
+      "summary": "PO, invoice, and goods receipt agree on vendor, price, and quantity."
+    },
+    {
+      "id": "bharat-partial-delivery",
+      "files": [
+        "04-po-24019-bharat-bearings.pdf",
+        "05-inv-88044-bharat-bearings.pdf",
+        "06-grn-31019-bharat-bearings.pdf"
+      ],
+      "expected_status": "exception",
+      "expected_exceptions": [
+        "quantity_mismatch",
+        "partial_delivery"
+      ],
+      "summary": "Ordered 100 bearings, warehouse received 60, invoice bills 100."
+    },
+    {
+      "id": "lakshmi-wrong-total",
+      "files": [
+        "07-po-24020-lakshmi-fasteners.pdf",
+        "08-inv-99107-lakshmi-fasteners.pdf",
+        "09-grn-31020-lakshmi-fasteners.pdf"
+      ],
+      "expected_status": "exception",
+      "expected_exceptions": [
+        "total_mismatch"
+      ],
+      "summary": "Invoice lines plus GST equal Rs. 9,735.00. The printed total is Rs. 9,375.00."
+    },
+    {
+      "id": "acme-legal-name",
+      "files": [
+        "10-po-24021-acme-pvt.pdf",
+        "11-inv-77890-acme-private.pdf",
+        "12-grn-31021-acme-pvt.pdf"
+      ],
+      "expected_status": "matched",
+      "expected_exceptions": [],
+      "summary": "PO and GRN say \"Acme Pvt Ltd\". The invoice says \"ACME Private Limited\". The GSTIN matches, so the legal-form difference is normalized."
+    },
+    {
+      "id": "western-different-vendor",
+      "files": [
+        "13-po-24022-western-hydraulics.pdf",
+        "14-inv-44210-deccan-hydraulics.pdf",
+        "15-grn-31022-western-hydraulics.pdf"
+      ],
+      "expected_status": "exception",
+      "expected_exceptions": [
+        "vendor_mismatch"
+      ],
+      "summary": "Goods were ordered from Western Hydraulics Ltd and received from them. The bill is from Deccan Hydraulics."
+    },
+    {
+      "id": "apex-duplicate-invoice",
+      "files": [
+        "01-po-24018-apex-steel.pdf",
+        "02-inv-77821-apex-steel.pdf",
+        "03-grn-31018-apex-steel.pdf",
+        "16-inv-77821-apex-resubmit.pdf"
+      ],
+      "expected_status": "exception",
+      "expected_exceptions": [
+        "duplicate_invoice"
+      ],
+      "summary": "INV-77821 is submitted twice. The purchase order, the first invoice, and the goods receipt still agree."
+    },
+    {
+      "id": "gupta-hindi-unpaired",
+      "files": [
+        "20-inv-5520-gupta-hindi.jpg"
+      ],
+      "expected_status": "incomplete",
+      "expected_exceptions": [
+        "missing_document"
+      ],
+      "summary": "Mixed Hindi-English invoice with no purchase order or goods receipt in the pack."
+    },
+    {
+      "id": "success-100-orion",
+      "files": [
+        "21-po-24040-orion-castings.pdf",
+        "22-inv-10040-orion-castings.pdf",
+        "23-grn-31040-orion-castings.pdf"
+      ],
+      "expected_status": "matched",
+      "expected_exceptions": [],
+      "summary": "Digital purchase order, invoice, and goods receipt agree, and every field including the issue date is printed. Upload these three files together. The read is 100% and the case auto-clears.",
+      "expected_routing": "auto_clear",
+      "extraction_confidence": 1.0
+    },
+    {
+      "id": "success-95-shakti",
+      "files": [
+        "24-po-24041-shakti-gaskets.pdf",
+        "25-inv-10041-shakti-gaskets.pdf",
+        "26-grn-31041-shakti-gaskets.pdf"
+      ],
+      "expected_status": "matched",
+      "expected_exceptions": [],
+      "summary": "Digital trio that agrees on vendor, price, and quantity. The issue date is not printed, so extraction confidence sits on the 95% auto-clear line. Upload these three files together.",
+      "expected_routing": "auto_clear",
+      "extraction_confidence": 0.95
+    },
+    {
+      "id": "success-90-metro",
+      "files": [
+        "27-po-24042-metro-polymers.jpg",
+        "28-inv-10042-metro-polymers.jpg",
+        "29-grn-31042-metro-polymers.jpg"
+      ],
+      "expected_status": "matched",
+      "expected_exceptions": [],
+      "summary": "Straight photographs of a clean trio. The documents agree. A photograph is capped at 90%, under the 95% auto-clear line, so the case is reviewed. Upload these three files together.",
+      "expected_routing": "flag",
+      "extraction_confidence": 0.9
+    }
+  ]
+}

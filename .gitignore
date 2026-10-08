@@ -1,0 +1,15 @@
+.DS_Store
+web/node_modules
+backend/.venv
+backend/.env
+web/.env
+web/.env.local
+web/.env.*.local
+backend/data
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+backend/.cache/
+.dataset-venv/
+.dataset-build/
